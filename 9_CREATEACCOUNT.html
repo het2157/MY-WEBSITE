@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Wikipedia - Create Account</title>
+  <link rel="shortcut icon" href="w.png" type="image/png" />
+  <link rel="stylesheet" href="9_createaccount.css" />
+
+</head>
+
+<body>
+
+<!-- 
+  <script>                                                       PRACTICAL == 3
+    // Password strength meter
+    const password = document.getElementById('password');
+    const strengthBar = document.getElementById('strengthBar').firstElementChild;
+    password.addEventListener('input', function() {
+      const val = password.value;
+      let strength = 0;
+      if (val.length >= 6) strength++;
+      if (/[A-Z]/.test(val)) strength++;
+      if (/[0-9]/.test(val)) strength++;
+      if (/[^A-Za-z0-9]/.test(val)) strength++;
+      let colors = ['#e74c3c', '#f1c40f', '#2ecc71', '#3498db'];
+      strengthBar.style.width = (strength * 25) + '%';
+      strengthBar.style.background = colors[strength-1] || '#eee';
+    });
+
+    // Form validation
+    document.getElementById('regForm').addEventListener('submit', function(e) {
+      let valid = true;
+
+      // Username validation
+      const username = document.getElementById('username');
+      const usernameError = document.getElementById('usernameError');
+      if (!username.value.match(/^[A-Za-z0-9_]{3,20}$/)) {
+        usernameError.textContent = 'Username must be 3-20 characters, letters, numbers, or underscores.';
+        valid = false;
+      } else {
+        usernameError.textContent = '';
+      }
+
+      // Email validation
+      const email = document.getElementById('email');
+      const emailError = document.getElementById('emailError');
+      if (!email.value.match(/^\\S+@\\S+\\.\\S+$/)) {
+        emailError.textContent = 'Enter a valid email address.';
+        valid = false;
+      } else {
+        emailError.textContent = '';
+      }
+
+      // Password validation
+      const passwordVal = password.value;
+      const passwordError = document.getElementById('passwordError');
+      if (passwordVal.length < 6) {
+        passwordError.textContent = 'Password must be at least 6 characters.';
+        valid = false;
+      } else {
+        passwordError.textContent = '';
+      }
+
+      // Confirm password
+      const confirm = document.getElementById('confirm');
+      const confirmError = document.getElementById('confirmError');
+      if (passwordVal !== confirm.value) {
+        confirmError.textContent = 'Passwords do not match.';
+        valid = false;
+      } else {
+        confirmError.textContent = '';
+      }
+
+      if (!valid) e.preventDefault();
+      else alert('Registration successful! (Demo only)');
+    });
+  </script> -->
+  <header>
+     <table>
+            <tr>
+                <td>
+                    <img src="https://en.wikipedia.org/static/images/icons/wikipedia.png" alt="Logo" width="50" height="50">
+                </td>
+                <th>
+                    <h1>WIKIPEDIA</h1>
+                </th>
+                <th>
+                    
+                </th>
+                <td>
+                    <pre>                                                                                                                            </pre>
+                </td>
+            </tr>
+        </table>
+   
+  </header>
+
+  <nav class="navbar">
+    <a href="2_MAIN.html">Home</a>
+    <a href="3_ABOUT.html">About</a>
+    <a href="4_CONTENT.html">Content</a>
+    <a href="10_LOGIN.html">Login</a>
+    <a href="9_CREATEACCOUNT.html" class="active">Create Account</a>
+    <a href="6_DONATE.html">Donate</a>
+  </nav>
+
+  
+
+
+  <main>
+    
+
+    <h1 class="center">Create Account</h1>
+    <form class="form-container">
+      <label for="name">Username</label>
+      <input id="name" name="name" type="text" placeholder="Enter username" required />
+      <label for="email">Email</label>
+      <input id="email" name="email" type="email" placeholder="Enter email" required />
+      <label for="password">Password</label>
+      <input id="password" name="password" type="password" placeholder="Enter password" required />
+      <label for="confirm">Confirm Password</label>
+      <input id="confirm" name="confirm" type="password" placeholder="Confirm password" required />
+      <button type="submit">Submit</button>
+    </form>
+
+    <section style="margin-top:40px">
+      <h2>Events List</h2>
+      <div id="events"></div>
+      <div id="events-pagination" style="margin:10px 0;"></div>
+      <h2>Student Profiles</h2>
+      <div id="students"></div>
+      <div id="students-pagination" style="margin:10px 0;"></div>
+    </section>
+
+  </main>
+
+  <footer>
+  <script>                        // PRACTICAL == 5
+    // Mock JSON data
+    const eventsJSON = '[{"id":1,"title":"Science Fair","date":"2025-10-10"},{"id":2,"title":"Art Exhibition","date":"2025-10-15"},{"id":3,"title":"Sports Day","date":"2025-10-20"},{"id":4,"title":"Tech Talk","date":"2025-10-25"},{"id":5,"title":"Cultural Fest","date":"2025-11-01"}]';
+    const studentsJSON = '[{"id":1,"name":"Amit Kumar","email":"amit@example.com"},{"id":2,"name":"Sara Lee","email":"sara@example.com"},{"id":3,"name":"John Doe","email":"john@example.com"},{"id":4,"name":"Priya Singh","email":"priya@example.com"},{"id":5,"name":"Rahul Patel","email":"rahul@example.com"},{"id":6,"name":"Emily Chen","email":"emily@example.com"}]';
+
+    // Parse JSON
+    const events = JSON.parse(eventsJSON);
+    const students = JSON.parse(studentsJSON);
+
+    // Pagination logic
+    function paginate(array, page_size, page_num) {
+      return array.slice((page_num - 1) * page_size, page_num * page_size);
+    }
+
+    // Render list with pagination
+    function renderList(array, containerId, paginationId, renderItem, pageSize=3) {
+      let page = 1;
+      const totalPages = Math.ceil(array.length / pageSize);
+      const container = document.getElementById(containerId);
+      const pagination = document.getElementById(paginationId);
+      function update() {
+        container.innerHTML = paginate(array, pageSize, page).map(renderItem).join('');
+        pagination.innerHTML = '';
+        for (let i = 1; i <= totalPages; i++) {
+          const btn = document.createElement('button');
+          btn.textContent = i;
+          btn.disabled = (i === page);
+          btn.onclick = () => { page = i; update(); };
+          pagination.appendChild(btn);
+        }
+      }
+      update();
+    }
+
+    // Render events
+    renderList(
+      events,
+      'events',
+      'events-pagination',
+      e => `<div style="padding:8px 0;border-bottom:1px solid #eee;"><strong>${e.title}</strong> <span style="color:#888;">(${e.date})</span></div>`
+    );
+
+    // Render students
+    renderList(
+      students,
+      'students',
+      'students-pagination',
+      s => `<div style="padding:8px 0;border-bottom:1px solid #eee;"><strong>${s.name}</strong> <span style="color:#888;">${s.email}</span></div>`
+    );
+  </script>
+    <div class="footer-links">
+       <a href="7_Privacypolicy.html">Privacy Policy</a>
+      <a href="8_DISCLAIMERS.html">Disclaimers</a>
+      <a href="3_ABOUT.html">About Wikipedia</a>
+      <a href="4_CONTENT.html">Content</a>
+      <a href="#">Statistics</a>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wikipedia</title>
+    <link rel="shortcut icon" href="w.png" type="image/png">
+    <!-- <link rel="stylesheet" href="INDEXstyle.css"> -->
+
+    <style>
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body with background image */
+        body {
+            font-family: "Linux Libertine", "Georgia", serif;
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/0/0f/Wiki_background.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            color: #202122;
+            line-height: 1.6;
+            padding: 20px;
+            position: relative;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background-color: rgba(255, 255, 255, 0.6);
+            /* increased transparency */
+            z-index: -1;
+        }
+
+
+        /* Header */
+        header {
+            text-align: center;
+            padding-top: 30px;
+            color: #000;
+        }
+
+        .head1 {}
+
+        .head2 {
+            font-size: 24px;
+            font-style: italic;
+            padding-bottom: 10px;
+            color: #54595d;
+        }
+
+        /* Main content */
+        main {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        main h3 {
+            margin: 15px 0;
+            font-size: 22px;
+            color: #3366cc;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        main h3 a {
+            text-decoration: none;
+            color: #3366cc;
+        }
+
+        main h3:hover a {
+            color: #000;
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #f1f1f1;
+            padding: 20px 10px;
+            font-size: 14px;
+            color: #555;
+            border-top: 1px solid #a2a9b1;
+        }
+
+        #prag1 {
+            max-width: 600px;
+            margin: auto;
+            text-align: center;
+        }
+    </style>
+
+</head>
+
+<body>
+    <header>
+        <h1 class="head1"><b>WIKIPEDIA</b></h1>
+        <br>
+        <h2 class="head2">The Free Encyclopedia</h2>
+
+
+    </header>
+
+    <br><br><br>
+    <main>
+
+
+        <h3 id="E"> <a href="2_MAIN.html">ENGLISH</a></h3>
+        <h3 id="H">HINDI</h3>
+        <h3 id="S">SPANISH</h3>
+        <h3 id="G">GUJARATI</h3>
+        <h3 id="J">JAPANES</h3>
+
+
+
+    </main>
+
+    <br><br><br><br>
+    <footer>
+
+        <center>
+            <p id="prag1">This page is available under the Creative Commons
+                Attribution-ShareAlike License</p>
+        </center>
+    </footer>
+</body>
+
+</html>

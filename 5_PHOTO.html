@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wikimedia - Photo</title>
+  <link rel="shortcut icon" href="w.png" type="image/png" />
+  <link rel="stylesheet" href="photo.css" />
+  <link rel="stylesheet" href="photo.js">
+</head>
+
+<body>
+  <header>
+    <table>
+      <tr>
+        <td>
+          <img src="https://en.wikipedia.org/static/images/icons/wikipedia.png" alt="Logo" width="50" height="50">
+        </td>
+        <th>
+          <h1>WIKIPEDIA</h1>
+        </th>
+        <th>
+
+        </th>
+        <td>
+          <pre>                                                                                                                            </pre>
+        </td>
+      </tr>
+    </table>
+  </header>
+
+  <nav class="navbar">
+    <a href="2_MAIN.html">Home</a>
+    <a href="3_ABOUT.html">About</a>
+    <a href="4_CONTENT.html">Content</a>
+    <a href="5_PHOTO.html" class="active">Photo</a>
+  </nav>
+
+  <main>
+    <section class="intro">
+      <h2>Participate</h2>
+      <p>Find a natural heritage site from the given list, take a photo and upload it to Wikimedia Commons:</p>
+      <button type="button">Upload Your Photo</button>
+    </section>
+
+    <section class="rules">
+      <h2>Campaign Rules</h2>
+      <p>We try to keep the campaign clean and simple to participate. There are only a few rules for photos to
+        participate in the contest in India. Every submission should be:</p>
+      <ol>
+        <li>All entries must be your own work; do not manipulate original images or use visible watermarks.</li>
+        <li>All photos must be uploaded within July 2025 to be eligible.</li>
+        <li>All photos must be licensed under the CC BY-SA license.</li>
+        <li>Participants must have an active email account for contact.</li>
+        <li>Upload photos of Natural Monuments in India only.</li>
+        <li>Captions and descriptions are required.</li>
+      </ol>
+    </section>
+    <br><br>
+
+
+    <div>
+
+      <h2>PHOTOS</h2>
+      <div id="slider">
+        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/4/41/Flag_of_India.svg/250px-Flag_of_India.svg.png"
+          class="slide" style="display:block;">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXaM2aNQb8jNUVcIdF-CVapmGwM8vlacF4iA&s"
+          class="slide">
+        <img src="https://wikimediafoundation.org/wp-content/uploads/2022/06/St._Basil_Cathedral.jpg?w=1024"
+          class="slide">
+        <button id="prev">❮</button>
+        <button id="next">❯</button>
+      </div>
+
+      <script>
+
+
+        // FAQ toggle
+        document.querySelectorAll(".faq-question").forEach(q => {
+          q.addEventListener("click", () => {
+            const answer = q.nextElementSibling;
+            answer.style.display = answer.style.display === "block" ? "none" : "block";
+          });
+        });
+
+
+        // Slider
+        let currentSlide = 0;
+        const slides = document.querySelectorAll(".slide");
+
+        function showSlide(index) {
+          slides.forEach((slide, i) => {
+            slide.style.display = i === index ? "block" : "none";
+          });
+        }
+
+        document.getElementById("next").onclick = () => {
+          currentSlide = (currentSlide + 1) % slides.length;
+          showSlide(currentSlide);
+        };
+
+        document.getElementById("prev").onclick = () => {
+          currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+          showSlide(currentSlide);
+        };
+
+      </script>
+
+
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-links">
+      <a href="7_Privacypolicy.html">Privacy Policy</a>
+      <a href="8_DISCLAIMERS.html">Disclaimers</a>
+      <a href="3_ABOUT.html">About Wikipedia</a>
+      <a href="4_CONTENT.html">Content</a>
+    </div>
+  </footer>
+</body>
+
+</html>

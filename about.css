@@ -1,0 +1,84 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body */
+body {
+    font-family: "Linux Libertine", "Georgia", serif;
+    background-color: #f8f9fa;
+    color: #202122;
+    padding: 20px;
+}
+
+/* Header table */
+header table {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+header img {
+    vertical-align: middle;
+}
+
+header a {
+    text-decoration: none;
+    color: #0645ad;
+    font-size: 15px;
+}
+
+/* Navigation bar */
+.topnav {
+    background-color: #f8f9fa;
+    overflow: hidden;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    padding: 8px 0;
+    text-align: center;
+}
+
+.topnav a {
+    display: inline-block;
+    color: #0645ad;
+    text-align: center;
+    padding: 10px 16px;
+    text-decoration: none;
+    font-size: 16px;
+    transition: background-color 0.2s ease;
+}
+
+.topnav a:hover {
+    background-color: #e2e2e2;
+    color: #000;
+}
+
+/* Main content */
+main {
+    max-width: 1000px;
+    margin: 0 auto;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+/* Footer */
+footer {
+    margin-top: 40px;
+    font-size: 14px;
+    color: #555;
+    background-color: #f1f1f1;
+    padding: 20px 10px;
+    border-top: 1px solid #a2a9b1;
+    text-align: center;
+}
+
+.footer-links a {
+    text-decoration: none;
+    color: #0645ad;
+    margin: 0 10px;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
